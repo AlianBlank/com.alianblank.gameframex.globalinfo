@@ -1,8 +1,8 @@
 ﻿## HOMEPAGE
+
 GameFrameX 的 GlobalConfig 全局配置组件
 
- **GlobalConfig 全局配置组件 (GlobalConfig Component)** - 提供全局配置组件相关的接口。
-
+**GlobalConfig 全局配置组件 (GlobalConfig Component)** - 提供全局配置组件相关的接口。
 
 # 使用文档(文档编写于GPT4)
 
@@ -31,3 +31,13 @@ GameFrameX 的 GlobalConfig 全局配置组件
 3. **资源管理**： 使用`CheckAppVersionUrl`和`CheckResourceVersionUrl`来管理游戏的版本控制和资源更新流程。
 
 4. **全局访问**： 你可以在游戏的任何地方访问`GlobalConfigComponent`实例来获取所需的全局配置信息。
+
+# 使用方式(任选其一)
+
+1. 直接在 `manifest.json` 的文件中的 `dependencies` 节点下添加以下内容
+   ```json
+      {"com.alianblank.gameframex.globalconfig": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.globalconfig.git"}
+    ```
+2. 在Unity 的`Packages Manager` 中使用`Git URL` 的方式添加库,地址为：https://github.com/AlianBlank/com.alianblank.gameframex.unity.globalconfig.git
+
+3. 直接下载仓库放置到Unity 项目的`Packages` 目录下。会自动加载识别
