@@ -1,7 +1,7 @@
 ﻿## HOMEPAGE
 GameFrameX 的 GlobalConfig 全局配置组件
 
- **GlobalConfig 全局配置组件 (GlobalConfigC Request)** - 提供全局配置组件相关的接口。
+ **GlobalConfig 全局配置组件 (GlobalConfig Component)** - 提供全局配置组件相关的接口。
 
 
 # 使用文档(文档编写于GPT4)
