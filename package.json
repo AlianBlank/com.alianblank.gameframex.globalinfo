@@ -1,5 +1,5 @@
 {
-  "name": "com.alianblank.gameframex.globalconfig",
+  "name": "com.alianblank.gameframex.unity.globalconfig",
   "displayName": "Game Frame X Global Config",
   "category": "Game Framework X",
   "description": "Game Frame X Global Config Component",
@@ -9,7 +9,7 @@
     "Game Framework X"
   ],
   "repository": {
-    "name": "com.alianblank.gameframex.globalconfig",
+    "name": "com.alianblank.gameframex.unity.globalconfig",
     "url": "https://github.com/AlianBlank/com.alianblank.gameframex.unity.globalconfig.git",
     "type": "git"
   },
