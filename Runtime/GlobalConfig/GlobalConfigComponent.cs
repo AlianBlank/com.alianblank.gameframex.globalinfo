@@ -29,5 +29,11 @@ namespace GameFrameX.GlobalConfig.Runtime
         /// 主机服务地址
         /// </summary>
         public string HostServerUrl { get; set; } = string.Empty;
+
+        protected override void Awake()
+        {
+            IsAutoRegister = false;
+            base.Awake();
+        }
     }
 }
