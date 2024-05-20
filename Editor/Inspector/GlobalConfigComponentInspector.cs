@@ -1,17 +1,21 @@
 ﻿using GameFrameX.Editor;
 using GameFrameX.GlobalConfig.Runtime;
 using UnityEditor;
+using UnityEngine;
 
 namespace GameFrameX.GlobalConfig.Editor
 {
     [CustomEditor(typeof(GlobalConfigComponent))]
     internal sealed class GlobalConfigComponentInspector : GameFrameworkInspector
     {
-        // private SerializedProperty m_InstanceRoot = null;
-        // private SerializedProperty m_WebRequestAgentHelperCount = null;
-        // private SerializedProperty m_Timeout = null;
-
-        // private HelperInfo<WebRequestAgentHelperBase> m_WebRequestAgentHelperInfo = new HelperInfo<WebRequestAgentHelperBase>("WebRequestAgent");
+        private SerializedProperty m_HostServerUrl = null;
+        private SerializedProperty m_Content = null;
+        private SerializedProperty m_CheckAppVersionUrl = null;
+        private SerializedProperty m_CheckResourceVersionUrl = null;
+        private GUIContent m_HostServerUrlGUIContent = new GUIContent("主机服务地址");
+        private GUIContent m_ContentGUIContent = new GUIContent("附加内容");
+        private GUIContent m_CheckAppVersionUrlGUIContent = new GUIContent("检测App版本地址接口");
+        private GUIContent m_CheckResourceVersionUrlGUIContent = new GUIContent("检测资源版本地址接口");
 
         public override void OnInspectorGUI()
         {
@@ -19,81 +23,14 @@ namespace GameFrameX.GlobalConfig.Editor
 
             serializedObject.Update();
 
-            // TimerComponent t = (TimerComponent)target;
-
-            /*
             EditorGUI.BeginDisabledGroup(EditorApplication.isPlayingOrWillChangePlaymode);
             {
-                EditorGUILayout.PropertyField(m_InstanceRoot);
-
-                // m_WebRequestAgentHelperInfo.Draw();
-
-                m_WebRequestAgentHelperCount.intValue = EditorGUILayout.IntSlider("Web Request Agent Helper Count", m_WebRequestAgentHelperCount.intValue, 1, 16);
+                EditorGUILayout.PropertyField(m_HostServerUrl, m_HostServerUrlGUIContent);
+                EditorGUILayout.PropertyField(m_CheckAppVersionUrl, m_CheckAppVersionUrlGUIContent);
+                EditorGUILayout.PropertyField(m_CheckResourceVersionUrl, m_CheckResourceVersionUrlGUIContent);
+                EditorGUILayout.PropertyField(m_Content, m_ContentGUIContent);
             }
-            EditorGUI.EndDisabledGroup();*/
-
-            /*
-            float timeout = EditorGUILayout.Slider("Timeout", m_Timeout.floatValue, 0f, 120f);
-            if (timeout != m_Timeout.floatValue)
-            {
-                if (EditorApplication.isPlaying)
-                {
-                    t.Timeout = timeout;
-                }
-                else
-                {
-                    m_Timeout.floatValue = timeout;
-                }
-            }
-
-            if (EditorApplication.isPlaying && IsPrefabInHierarchy(t.gameObject))
-            {
-                EditorGUILayout.LabelField("Total Agent Count", t.TotalAgentCount.ToString());
-                EditorGUILayout.LabelField("Free Agent Count", t.FreeAgentCount.ToString());
-                EditorGUILayout.LabelField("Working Agent Count", t.WorkingAgentCount.ToString());
-                EditorGUILayout.LabelField("Waiting Agent Count", t.WaitingTaskCount.ToString());
-                EditorGUILayout.BeginVertical("box");
-                {
-                    TaskInfo[] webRequestInfos = t.GetAllWebRequestInfos();
-                    if (webRequestInfos.Length > 0)
-                    {
-                        foreach (TaskInfo webRequestInfo in webRequestInfos)
-                        {
-                            DrawWebRequestInfo(webRequestInfo);
-                        }
-
-                        if (GUILayout.Button("Export CSV Data"))
-                        {
-                            string exportFileName = EditorUtility.SaveFilePanel("Export CSV Data", string.Empty, "WebRequest Task Data.csv", string.Empty);
-                            if (!string.IsNullOrEmpty(exportFileName))
-                            {
-                                try
-                                {
-                                    int index = 0;
-                                    string[] data = new string[webRequestInfos.Length + 1];
-                                    data[index++] = "WebRequest Uri,Serial Id,Tag,Priority,Status";
-                                    foreach (TaskInfo webRequestInfo in webRequestInfos)
-                                    {
-                                        data[index++] = Utility.Text.Format("{0},{1},{2},{3},{4}", webRequestInfo.Description, webRequestInfo.SerialId, webRequestInfo.Tag ?? string.Empty, webRequestInfo.Priority, webRequestInfo.Status);
-                                    }
-
-                                    File.WriteAllLines(exportFileName, data, Encoding.UTF8);
-                                    Debug.Log(Utility.Text.Format("Export web request task CSV data to '{0}' success.", exportFileName));
-                                }
-                                catch (Exception exception)
-                                {
-                                    Debug.LogError(Utility.Text.Format("Export web request task CSV data to '{0}' failure, exception is '{1}'.", exportFileName, exception));
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        GUILayout.Label("WebRequset Task is Empty ...");
-                    }
-                }
-                EditorGUILayout.EndVertical();
-            }*/
+            EditorGUI.EndDisabledGroup();
 
             serializedObject.ApplyModifiedProperties();
 
@@ -109,18 +46,16 @@ namespace GameFrameX.GlobalConfig.Editor
 
         private void OnEnable()
         {
-            // m_InstanceRoot = serializedObject.FindProperty("m_InstanceRoot");
-            // m_WebRequestAgentHelperCount = serializedObject.FindProperty("m_WebRequestAgentHelperCount");
-            // m_Timeout = serializedObject.FindProperty("m_Timeout");
-            //
-            // m_WebRequestAgentHelperInfo.Init(serializedObject);
+            m_CheckAppVersionUrl = serializedObject.FindProperty("m_CheckAppVersionUrl");
+            m_HostServerUrl = serializedObject.FindProperty("m_HostServerUrl");
+            m_Content = serializedObject.FindProperty("m_Content");
+            m_CheckResourceVersionUrl = serializedObject.FindProperty("m_CheckResourceVersionUrl");
 
             RefreshTypeNames();
         }
 
         private void RefreshTypeNames()
         {
-            // m_WebRequestAgentHelperInfo.Refresh();
             serializedObject.ApplyModifiedProperties();
         }
     }
