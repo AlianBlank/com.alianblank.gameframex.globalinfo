@@ -16,6 +16,11 @@ namespace GameFrameX.GlobalConfig.Runtime
         public string CheckResourceVersionUrl { get; set; }
 
         /// <summary>
+        /// AOT代码列表
+        /// </summary>
+        public string AOTCodeList { get; set; }
+
+        /// <summary>
         /// 扩展内容
         /// </summary>
         public string Content { get; set; }

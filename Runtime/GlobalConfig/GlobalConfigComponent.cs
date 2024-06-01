@@ -39,6 +39,20 @@ namespace GameFrameX.GlobalConfig.Runtime
         }
 
         /// <summary>
+        /// AOT代码列表
+        /// </summary>
+        [SerializeField] private string m_AOTCodeList = string.Empty;
+
+        /// <summary>
+        /// AOT代码列表
+        /// </summary>
+        public string AOTCodeList
+        {
+            get => m_AOTCodeList;
+            set => m_AOTCodeList = value;
+        }
+
+        /// <summary>
         /// 附加内容
         /// </summary>
         [SerializeField] private string m_Content = string.Empty;
