@@ -13,6 +13,7 @@ namespace GameFrameX.GlobalConfig.Runtime
             _ = typeof(HttpJsonResult);
             _ = typeof(ResponseGameAppVersion);
             _ = typeof(ResponseGlobalInfo);
+            _ = typeof(ResponseGameAssetPackageVersion);
         }
     }
 }

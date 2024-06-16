@@ -1,4 +1,6 @@
-﻿using GameFrameX.Runtime;
+﻿using System;
+using System.Collections.Generic;
+using GameFrameX.Runtime;
 using UnityEngine;
 
 namespace GameFrameX.GlobalConfig.Runtime
@@ -44,12 +46,36 @@ namespace GameFrameX.GlobalConfig.Runtime
         [SerializeField] private string m_AOTCodeList = string.Empty;
 
         /// <summary>
+        /// AOT补充元数据列表
+        /// </summary>
+        [SerializeField] private List<string> m_AOTCodeLists = new List<string>();
+
+        /// <summary>
+        /// 补充元数据列表
+        /// </summary>
+        public List<string> AOTCodeLists
+        {
+            get { return m_AOTCodeLists; }
+        }
+
+        /// <summary>
         /// AOT代码列表
         /// </summary>
         public string AOTCodeList
         {
             get => m_AOTCodeList;
-            set => m_AOTCodeList = value;
+            set
+            {
+                m_AOTCodeList = value;
+                try
+                {
+                    m_AOTCodeLists = Utility.Json.ToObject<List<string>>(value);
+                }
+                catch (Exception e)
+                {
+                    Log.Fatal(e);
+                }
+            }
         }
 
         /// <summary>
