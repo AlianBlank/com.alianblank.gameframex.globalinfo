@@ -24,5 +24,10 @@ namespace GameFrameX.GlobalConfig.Runtime
         /// </summary>
         [JsonProperty(PropertyName = "data")]
         public string Data { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }
