@@ -2,7 +2,7 @@
   "name": "com.gameframex.unity.globalconfig",
   "displayName": "Game Frame X Global Config",
   "category": "Game Framework X",
-  "description": "Game Frame X Global Config Component",
+  "description": "独立游戏前后端一体化解决方案,独立游戏开发者的圆梦大使。\n文档地址: https://gameframex.doc.alianblank.com \n Game Frame X Global Config组件 - 全局配置管理器，主要记录从服务器获取的配置信息.",
   "version": "1.0.4",
   "unity": "2017.1",
   "keywords": [
