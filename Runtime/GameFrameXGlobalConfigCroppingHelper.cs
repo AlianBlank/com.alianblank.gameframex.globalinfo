@@ -10,7 +10,6 @@ namespace GameFrameX.GlobalConfig.Runtime
         private void Start()
         {
             _ = typeof(GlobalConfigComponent);
-            _ = typeof(HttpJsonResult);
             _ = typeof(ResponseGameAppVersion);
             _ = typeof(ResponseGlobalInfo);
             _ = typeof(ResponseGameAssetPackageVersion);
